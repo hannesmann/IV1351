@@ -1,3 +1,5 @@
+-- From Astah
+
 CREATE TYPE SKILLLEVEL AS ENUM ('beginner', 'intermediate', 'advanced');
 CREATE TYPE LESSONTYPE AS ENUM ('individual', 'group', 'ensemble');
 
@@ -145,6 +147,13 @@ CREATE TABLE individual_lesson (
 
 ALTER TABLE individual_lesson ADD CONSTRAINT PK_individual_lesson PRIMARY KEY (lesson_id);
 
+CREATE TABLE rented_instruments (
+ person_id SERIAL NOT NULL,
+ instrument_id SERIAL NOT NULL
+);
+
+ALTER TABLE rented_instruments ADD CONSTRAINT PK_rented_instruments PRIMARY KEY (person_id,instrument_id);
+
 
 ALTER TABLE student ADD CONSTRAINT FK_student_0 FOREIGN KEY (person_id) REFERENCES person (id);
 ALTER TABLE student ADD CONSTRAINT FK_student_1 FOREIGN KEY (instrument_a_id) REFERENCES instrument (id);
@@ -186,4 +195,7 @@ ALTER TABLE group_lesson ADD CONSTRAINT FK_group_lesson_0 FOREIGN KEY (lesson_id
 
 ALTER TABLE individual_lesson ADD CONSTRAINT FK_individual_lesson_0 FOREIGN KEY (lesson_id) REFERENCES lesson (id);
 
+
+ALTER TABLE rented_instruments ADD CONSTRAINT FK_rented_instruments_0 FOREIGN KEY (person_id) REFERENCES student (person_id);
+ALTER TABLE rented_instruments ADD CONSTRAINT FK_rented_instruments_1 FOREIGN KEY (instrument_id) REFERENCES instrument (id);
 
