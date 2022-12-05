@@ -42,6 +42,9 @@ COPY public.contact_details (person_id, email, address) FROM stdin;
 10	carlinho.bamsesson@email.net	Årstavägsgatan 1, 866 72 Åre
 11	sarainho.bamsesson@email.net	Årstavägsgatan 1, 866 72 Åre
 12	annainho.bamsesson@email.net	Årstavägsgatan 1, 866 72 Åre
+13	carolinainho.undulatsson@email.net	Vulcanusgatuvägen 26, 851 13 Umeå
+14	isabellinho.undulatsson@email.net	Vulcanusgatuvägen 26, 851 13 Umeå
+15	\N	Vulcanusgatuvägen 26, 851 13 Umeå
 \.
 
 
@@ -64,7 +67,7 @@ COPY public.contact_person (student_id, contact_person_id) FROM stdin;
 --
 
 COPY public.ensemble (lesson_id, min_students, max_students, genre) FROM stdin;
-4	4	5	Jazz
+4	4	7	Jazz
 \.
 
 
@@ -155,6 +158,9 @@ COPY public.person (id, personal_number, name) FROM stdin;
 10	194607137454	Carlinho Bamsesson
 11	200509102380	Sarainho Bamsesson
 12	200112252382	Annainho Bamsesson
+13	199010292382	Carolinainho Undulatsson
+14	200209012392	Isabellinho Undulatsson
+15	199712282384	Jonnainho Undulatsson
 \.
 
 
@@ -203,6 +209,13 @@ ensemble	advanced	30
 
 COPY public.relationship (student_id, sibling_id) FROM stdin;
 11	12
+12	11
+13	14
+13	15
+14	13
+14	15
+15	13
+15	14
 \.
 
 
@@ -226,6 +239,9 @@ COPY public.student (person_id, current_skill_level, outstanding_balance) FROM s
 6	advanced	0
 11	beginner	0
 12	beginner	0
+13	intermediate	0
+14	beginner	0
+15	beginner	0
 \.
 
 
