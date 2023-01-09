@@ -1,6 +1,8 @@
 -- This query counts lessons for every instructor
 
-CREATE MATERIALIZED VIEW lessons_this_month_for_instructors AS 
+DROP VIEW IF EXISTS lessons_this_month_for_instructors CASCADE;
+
+CREATE VIEW lessons_this_month_for_instructors AS 
 	SELECT 
 		instructor.person_id AS instructor_id, COUNT(lesson.id) AS lessons_this_month
 		FROM booked_lessons

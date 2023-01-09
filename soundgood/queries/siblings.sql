@@ -1,8 +1,10 @@
 -- This query counts the number of siblings for all students and groups them
 -- Operates on "duplicate" rows (so student X is related to Y and student Y is related to X)
 
+DROP VIEW IF EXISTS sibling_counts_for_students CASCADE;
+
 -- Cache siblings counts for every student
-CREATE MATERIALIZED VIEW sibling_counts_for_students AS 
+CREATE VIEW sibling_counts_for_students AS 
 	SELECT student.person_id, COUNT(relationship.student_id)
 	FROM student
 	LEFT JOIN relationship ON student.person_id = relationship.student_id
