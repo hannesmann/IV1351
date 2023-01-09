@@ -23,6 +23,10 @@ CREATE VIEW ensembles_students AS
 	FROM ensembles_next_week
 
 	LEFT JOIN booked_lessons ON booked_lessons.lesson_id = ensembles_next_week.lesson_id
+	LEFT JOIN student ON student.person_id = booked_lessons.person_id
+
+	WHERE student.person_id IS NOT NULL
+
 	GROUP BY ensembles_next_week.lesson_id;
 
 CREATE MATERIALIZED VIEW ensemble_overview_next_week AS
